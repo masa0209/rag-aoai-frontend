@@ -1,4 +1,3 @@
-import Image from "next/image";
 import MessageArea from "@/components/MessageArea/MessageArea";
 import FormInput from "@/components/FormInput/FormInput";
 

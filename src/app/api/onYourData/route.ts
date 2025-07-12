@@ -6,11 +6,16 @@ export const POST = async (req: NextRequest) => {
         const { message } = await req.json()
         const result = await getOnYourData(message)
 
+        if (!result || result.length === 0 || !result[0]?.message?.content) {
+            return NextResponse.json({ aiMessage: 'No response from AI' }, { status: 500 })
+        }
+
         const aiMessage = result[0].message.content
 
         return NextResponse.json({ aiMessage }, { status: 200 })
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error(error)
-        return NextResponse.json({ aiMessage:error.message}, { status: 500 })
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred'
+        return NextResponse.json({ aiMessage: errorMessage }, { status: 500 })
     }
 }
