@@ -3,13 +3,13 @@ import axios from 'axios'
 
 export const getOnYourData = async (message: string): Promise<any[]> => {
     return new Promise(async (resolve, reject) => {
-        const endpoint = process.env.AZURE_OPENAI_ENDPOINT!
+        const endpoint = process.env.AZURE_OPENAI_API_ENDPOINT!
         const azureApiKey = process.env.AZURE_OPENAI_API_KEY!
-        const deploymentName = process.env.AZURE_OPENAI_DEPLOYMENT_NAME!
+        const deploymentName = process.env.AZURE_OPENAI_API_DEPLOYMENT_ID!
 
         console.log(endpoint, azureApiKey, deploymentName)
 
-        const apiUrl = ''
+        const apiUrl = 'https://api-web-dev-chat.azurewebsites.net/conversation'
         const requestData = {
             messages: [
                 {
