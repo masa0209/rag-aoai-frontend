@@ -16,6 +16,10 @@ jobs:
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v3
+        env:
+          AZURE_OPENAI_API_ENDPOINT: ${{ secrets.AZURE_OPENAI_API_ENDPOINT }}
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          AZURE_OPENAI_API_DEPLOYMENT_ID: ${{ secrets.AZURE_OPENAI_API_DEPLOYMENT_ID }}
         with:
           submodules: true
           lfs: false
